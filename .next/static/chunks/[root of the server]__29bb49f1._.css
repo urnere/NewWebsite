@@ -976,10 +976,6 @@ body {
   min-width: var(--radix-select-trigger-width);
 }
 
-.min-w-max {
-  min-width: max-content;
-}
-
 .max-w-2xl {
   max-width: 42rem;
 }
@@ -1093,13 +1089,12 @@ body {
   touch-action: none;
 }
 
-.touch-pan-y {
-  --tw-pan-y: pan-y;
-  touch-action: var(--tw-pan-x) var(--tw-pan-y) var(--tw-pinch-zoom);
-}
-
 .select-none {
   user-select: none;
+}
+
+.snap-x {
+  scroll-snap-type: x var(--tw-scroll-snap-strictness);
 }
 
 .flex-col {
@@ -1112,6 +1107,10 @@ body {
 
 .flex-wrap {
   flex-wrap: wrap;
+}
+
+.flex-nowrap {
+  flex-wrap: nowrap;
 }
 
 .items-start {

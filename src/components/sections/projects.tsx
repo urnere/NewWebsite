@@ -124,10 +124,10 @@ export function ProjectsSection() {
 
       {/* Horizontal scroll container for smaller screens (below md) */}
       {/* Added scroll-smooth for potentially smoother scrolling */}
-      <div className="w-full overflow-x-auto pb-4 md:hidden touch-pan-y scroll-smooth">
+      <div className="w-full overflow-x-auto pb-4 md:hidden snap-x snap-madatory touch-action-pan-x">
         {/* Added px-4 for padding *inside* the scrollable area, ensuring cards don't touch edges */}
         {/* Use gap-4 for spacing between cards */}
-        <div className="flex min-w-max gap-4 px-4">
+        <div className="flex flex-nowrap gap-4 px-4">
           {initialProjects.map((project) => (
             <Card
               key={project.id}
