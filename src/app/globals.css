@@ -1,0 +1,129 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Allow scrolling when content overflows */
+html {
+  overflow-y: auto; /* Change from hidden to auto */
+}
+
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  /* Allow natural scrolling */
+  /* Removed overflow: hidden; */
+}
+
+@layer base {
+  :root {
+    /* Light Theme Variables */
+    --background: 30 15% 95%; /* Light Warm Gray #F4F2F1 */
+    --foreground: 30 3% 12%; /* Dark Desaturated Brown #1f1e1d */
+    --card: 0 0% 100%; /* White #FFFFFF */
+    --card-foreground: 30 3% 12%; /* Dark Desaturated Brown #1f1e1d */
+    --popover: 0 0% 100%; /* White #FFFFFF */
+    --popover-foreground: 30 3% 12%; /* Dark Desaturated Brown #1f1e1d */
+    --primary: 30 3% 12%; /* Dark Desaturated Brown #1f1e1d */
+    --primary-foreground: 30 15% 95%; /* Light Warm Gray #F4F2F1 */
+    --secondary: 30 5% 90%; /* Very Light Warm Gray #E7E6E4 */
+    --secondary-foreground: 30 3% 12%; /* Dark Desaturated Brown #1f1e1d */
+    --muted: 30 5% 85%; /* Light Gray #DBD9D6 */
+    --muted-foreground: 30 4% 50%; /* Medium Gray #84817E */
+    --accent: 35 70% 55%; /* Warm Desaturated Orange/Gold #E6984D */
+    --accent-foreground: 30 15% 95%; /* Light Warm Gray #F4F2F1 (For contrast on accent bg) */
+    --destructive: 0 84.2% 60.2%; /* Default ShadCN Light Destructive */
+    --destructive-foreground: 0 0% 98%; /* Default ShadCN Light Destructive Foreground */
+    --border: 30 5% 80%; /* Slightly darker gray border #D1CEC9 */
+    --input: 30 5% 80%; /* Slightly darker gray input #D1CEC9 */
+    --ring: 35 70% 55%; /* Warm Desaturated Orange/Gold #E6984D */
+    --chart-1: 220 70% 50%;
+    --chart-2: 160 60% 45%;
+    --chart-3: 30 80% 55%;
+    --chart-4: 280 65% 60%;
+    --chart-5: 340 75% 55%;
+    /* Maintain sidebar colors from previous theme or adjust as needed */
+    --sidebar-background: 240 5.9% 10%;
+    --sidebar-foreground: 240 4.8% 95.9%;
+    --sidebar-primary: 224.3 76.3% 48%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 240 3.7% 15.9%;
+    --sidebar-accent-foreground: 240 4.8% 95.9%;
+    --sidebar-border: 240 3.7% 15.9%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+    --radius: 0.5rem;
+  }
+  .dark {
+    /* Dark Theme Variables */
+    --background: 30 3% 12%; /* Dark Desaturated Brown #1f1e1d */
+    --foreground: 30 15% 95%; /* Light Warm Gray #F4F2F1 */
+    --card: 30 3% 15%; /* Slightly lighter dark brown #282726 */
+    --card-foreground: 30 15% 95%; /* Light Warm Gray #F4F2F1 */
+    --popover: 30 3% 15%; /* Slightly lighter dark brown #282726 */
+    --popover-foreground: 30 15% 95%; /* Light Warm Gray #F4F2F1 */
+    --primary: 30 15% 95%; /* Light Warm Gray #F4F2F1 */
+    --primary-foreground: 30 3% 12%; /* Dark Desaturated Brown #1f1e1d */
+    --secondary: 30 3% 18%; /* Slightly lighter dark brown #31302E */
+    --secondary-foreground: 30 15% 95%; /* Light Warm Gray #F4F2F1 */
+    --muted: 30 3% 18%; /* Slightly lighter dark brown #31302E */
+    --muted-foreground: 30 8% 65%; /* Muted Light Gray #ABA9A6 */
+    --accent: 35 70% 55%; /* Warm Desaturated Orange/Gold #E6984D */
+    --accent-foreground: 30 3% 12%; /* Dark Desaturated Brown #1f1e1d */
+    --destructive: 0 62.8% 30.6%; /* Default ShadCN Dark Destructive */
+    --destructive-foreground: 0 0% 98%; /* Default ShadCN Dark Destructive Foreground */
+    --border: 30 3% 25%; /* Darker Warm Gray Border #434140 */
+    --input: 30 3% 25%; /* Darker Warm Gray Input #434140 */
+    --ring: 35 70% 55%; /* Warm Desaturated Orange/Gold #E6984D */
+    --chart-1: 220 70% 50%;
+    --chart-2: 160 60% 45%;
+    --chart-3: 30 80% 55%;
+    --chart-4: 280 65% 60%;
+    --chart-5: 340 75% 55%;
+    /* Maintain sidebar colors from previous theme or adjust as needed */
+    --sidebar-background: 240 5.9% 10%;
+    --sidebar-foreground: 240 4.8% 95.9%;
+    --sidebar-primary: 224.3 76.3% 48%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 240 3.7% 15.9%;
+    --sidebar-accent-foreground: 240 4.8% 95.9%;
+    --sidebar-border: 240 3.7% 15.9%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+    /* Ensure smooth scrolling behavior */
+    -webkit-overflow-scrolling: touch;
+  }
+}
+
+/* Smooth transition styles */
+.section-container > * {
+  transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out;
+}
+
+.section-inactive {
+  opacity: 0;
+  pointer-events: none;
+  position: absolute; /* Keep inactive sections out of flow but available for transition */
+  transform: translateY(10px); /* Slight slide effect */
+  /* Ensure inactive sections don't interfere with layout */
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+
+.section-active {
+  opacity: 1;
+  transform: translateY(0);
+  position: relative; /* Ensure active section takes space */
+}
+
+/* Touch action for project scrolling */
+.touch-pan-y {
+  touch-action: pan-y;
+}
