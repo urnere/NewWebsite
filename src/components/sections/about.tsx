@@ -41,7 +41,7 @@ export function AboutSection() {
               Barış Manço Özdemir
             </CardTitle>
             <p className="text-base text-muted-foreground sm:text-lg">
-              Junior Flutter Developer
+              Frontend & Mobile Developer
             </p>
           </CardHeader>
           {/* Added animation classes with delay */}
